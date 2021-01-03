@@ -1,6 +1,8 @@
-# discord-alt-token-generator
+# Discord Alt Token Generator - Alkosik
 
-Alt-token generator for discord (slow)
+####FIXED FORK OF https://github.com/Matix-Media/discord-alt-token-generator
+
+Alt-token generator for discord (very slow)
 
 ## Info
 
@@ -10,7 +12,7 @@ We recommend using a VPN when using the bot.
 
 # Usage under Windows (CMD)
 
-First you have to active the virutal enviroment wich contains packages and a python copy. To do this, just navigate to the main folder of the scripts and type the follwing line into your command prompt
+First you have to active the virutal enviroment wich contains packages and a python copy. To do this, just navigate to the main folder of the scripts and type the follwing line into your command prompt (PowerShell/VSC Terminal wont work)
 
 `> venv\Scripts\activate`
 

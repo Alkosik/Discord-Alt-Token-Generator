@@ -26,9 +26,20 @@ class Bot():
     terms_selector = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignCenter-1dQNNs.noWrap-3jynv6.marginTop20-3TxNs6 > label > input"
     register_next_selector = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div:nth-child(5) > button"
     register_next_selector_us = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div:nth-child(4) > button"
-    month_selector = "#app-mount > div.app-1q1i1E  > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > container-3bTSed marginTop20-3TxNs6 > inputs-14Hc7m > div.tabindex(1)"
-
-
+    
+    # -- BIRTHDATE --
+    #################
+    # -- MONTH --
+    month_s = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div.container-3bTSed.marginTop20-3TxNs6 > div.inputs-14Hc7m > div:nth-child(1) > div > div > div > div > div.css-1fhf191 > div"
+    ##month_input = ""
+    # -- DAY --
+    day_s = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div.container-3bTSed.marginTop20-3TxNs6 > div.inputs-14Hc7m > div:nth-child(2) > div > div > div > div > div.css-1fhf191 > div"
+    ##day_input = 
+    # -- YEAR --
+    year_s = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div.container-3bTSed.marginTop20-3TxNs6 > div.inputs-14Hc7m > div:nth-child(3) > div > div > div > div > div.css-1fhf191 > div"
+    ##year_input = 
+    #####################
+    # -- BIRTHDATE END --
 
     settings_selector = "#app-mount > div.app-1q1i1E > div > div.layers-3iHuyZ.layers-3q14ss > div > div > div > div.content-98HsJk > div.sidebar-2K8pFh.hasNotice-1XRy4h > section > div > div.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > button:nth-child(3)"
     logout_selector = "#app-mount > div.app-1q1i1E > div > div.layers-3iHuyZ.layers-3q14ss > div:nth-child(2) > div > div.sidebarRegion-VFTUkN > div > div > nav > div > div:nth-child(23)"
@@ -140,6 +151,9 @@ class Bot():
             self.username_selector)[0]
         password_textbox = self.driver.find_elements_by_css_selector(
             self.password_selector)[0]
+        month_dropdown = self.driver.find_elements_by_css_selector(self.month_s)[0]
+        day_dropdown = self.driver.find_elements_by_css_selector(self.day_s)[0]
+        year_dropdown = self.driver.find_elements_by_css_selector(self.year_s)[0]
 
         if self.driver.find_elements_by_css_selector(
                 self.terms_selector):
@@ -152,17 +166,27 @@ class Bot():
         email_textbox.send_keys(account.email)
         username_textbox.send_keys(account.username)
         password_textbox.send_keys(account.password)
+        #region
         # -- START OF BIRTHDATE --
         # MONTH
-        self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[1]/div/div/div/div/div[2]/div').click()
+        month_dropdown.click()
         self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[1]/div/div/div/div/div[1]/div[2]/div/input').send_keys('November', Keys.RETURN)
         # DAY
-        self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[2]/div/div/div/div/div[2]/div').click()
+        day_dropdown.click()
         self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[2]/div/div/div/div/div[1]/div[2]/div/input').send_keys('5', Keys.RETURN)
         # YEAR
-        self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[3]/div/div/div/div/div[2]/div').click()
+        year_dropdown.click()
         self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[3]/div/div/div/div/div[1]/div[2]/div/input').send_keys('1995', Keys.RETURN)
+        # -- BDATE DEPRACTED --
+        # MONTH
+        #self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[1]/div/div/div/div/div[2]/div').click()
+        # DAY
+        #self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[2]/div/div/div/div/div[2]/div').click()
+        # YEAR
+        #self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[3]/div/div/div/div/div[2]/div').click()
+        # -- BDATE DEPRACTED END --
         # -- END OF BIRTHDATE --
+        #endregion
         terms_checkbox.click()
         time.sleep(1)
         # -- DEPRACTED --

@@ -118,7 +118,7 @@ class Bot():
                 self.logout(stack=stack + 1)
             else:
                 raise Exception(
-                    "Stacktrace 3 reached! Logout not successfull! Message: ")
+                    "Stacktrace 3 reached! Logout not successfull! Message: " + e)
 
         return True
 
@@ -236,6 +236,7 @@ class Bot():
                 time.sleep(self.skip_tutorial_timeout)
 
         except (sel_exceptions.ElementClickInterceptedException, sel_exceptions.NoSuchElementException, sel_exceptions.StaleElementReferenceException, sel_exceptions.ElementNotInteractableException, sel_exceptions.ElementClickInterceptedException, IndexError) as e:
+            print(e)
             pass
 
         return account
@@ -271,6 +272,7 @@ class Bot():
             return self.driver.current_url
         except (sel_exceptions.ElementClickInterceptedException, sel_exceptions.NoSuchElementException, sel_exceptions.StaleElementReferenceException, sel_exceptions.ElementNotInteractableException, sel_exceptions.ElementClickInterceptedException) as e:
             self.logout()
+            print("Logging out... E:" + e)
             return False
 
     def write_message_in_channel(self, channel_url):
@@ -284,6 +286,7 @@ class Bot():
             return self.account.welcome_message
         except (sel_exceptions.ElementClickInterceptedException, sel_exceptions.NoSuchElementException, sel_exceptions.StaleElementReferenceException, sel_exceptions.ElementNotInteractableException, sel_exceptions.ElementClickInterceptedException) as e:
             self.logout()
+            print("Logging out... E:" + e)
             return False
 
 

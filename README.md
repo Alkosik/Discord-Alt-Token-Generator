@@ -1,16 +1,22 @@
-# discord-alt-token-generator
+# Discord Alt Token Generator - Alkosik
 
-Alt-token generator for discord (slow)
+Alt-token generator for discord using **Selenium** (very slow)
 
-## Info
+### FIXED FORK OF https://github.com/Matix-Media/discord-alt-token-generator
 
+## Information
+
+This software was designated for use in educational purposes and as such:  
 The creator and publisher of this bot is not responsible for any kind of damage or anything else. Use of the bot is at your own risk and the creator is not responsible for bans from the Discord network.
 
 We recommend using a VPN when using the bot.
 
+**Creator: [Matix-Media](https://github.com/Matix-Media)**  
+**Fixed By: [Alkosik](https://github.com/Alkosik)**
+
 # Usage under Windows (CMD)
 
-First you have to active the virutal enviroment wich contains packages and a python copy. To do this, just navigate to the main folder of the scripts and type the follwing line into your command prompt
+First you have to active the virutal enviroment wich contains packages and a python copy. To do this, just navigate to the main folder of the scripts and type the follwing line into your command prompt (PowerShell/VSC Terminal wont work):
 
 `> venv\Scripts\activate`
 
@@ -39,7 +45,15 @@ Your windows username is required to get your Chrome config to bypass recaptcha.
 The alt-tokens get saved into the tokens folder
 
 ```
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
 # Usage under MacOS
 
 First you have to active the virutal enviroment wich contains packages and a python copy. To do this, just navigate to the main folder of the scripts and type the follwing line into your command prompt
@@ -53,7 +67,7 @@ To run the generator now, just go to the help, for all infos you need.
 
 `> py generator.py help`
 
-It should tell you something like this
+It should tell you something like this:
 
 ```
 :: HELP ::

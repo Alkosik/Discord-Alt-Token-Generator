@@ -11,8 +11,8 @@ The creator and publisher of this bot is not responsible for any kind of damage 
 
 We recommend using a VPN when using the bot.
 
-**Creator: Matix-Media**  
-**Fixed By: Alkosik**
+**Creator: [Matix-Media](https://github.com/Matix-Media)**  
+**Fixed By: [Alkosik](https://github.com/Alkosik)**
 
 # Usage under Windows (CMD)
 

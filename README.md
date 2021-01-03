@@ -4,11 +4,14 @@
 
 Alt-token generator for discord (very slow)
 
-## Info
+## Information
 
 The creator and publisher of this bot is not responsible for any kind of damage or anything else. Use of the bot is at your own risk and the creator is not responsible for bans from the Discord network.
 
 We recommend using a VPN when using the bot.
+
+#### Creator: Matix-Media
+#### Fixed By: Alkosik
 
 # Usage under Windows (CMD)
 

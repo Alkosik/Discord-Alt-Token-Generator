@@ -2,7 +2,6 @@
 import random
 import string
 
-
 def generate_password(stringLength=8):
     lettersAndDigits = string.ascii_letters + string.digits
     return ''.join((random.choice(lettersAndDigits) for i in range(stringLength)))
@@ -16,15 +15,27 @@ def generate_email(mail=None, min=5, max=20):
     winext = extensions[random.randint(0, len(extensions)-1)]
     windom = domains[random.randint(0, len(domains)-1)]
 
-    acclen = random.randint(min, max)
+    #acclen = random.randint(min, max)
 
-    if mail == None:
-        winacc = ''.join(random.choice(string.ascii_lowercase + string.digits + string.ascii_uppercase)
-                         for _ in range(acclen))
-    else:
-        winacc = mail
+    email_n = open('temp_mail.txt', 'r')
+    line = email_n.readline()
+    print('LINE:' + line)
+    current_mails = int(line)
+    
+    f = open('email.txt')
+    first_line = f.readline()
+    mail = first_line
+    
+    winacc = "" + mail + "+" + str(current_mails)
+  
 
     finale = winacc + "@" + windom + "." + winext
+    print(finale)
+    current_mails += 1
+    print('CURRENT MAILS:' + str(current_mails))
+    line = str(current_mails)
+    email_n = open('temp_mail.txt', 'w')
+    email_n.writelines(line)
     return finale
 
 

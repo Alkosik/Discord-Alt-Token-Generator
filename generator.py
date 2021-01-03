@@ -14,7 +14,6 @@ from os import path, mkdir
 import random
 from proxyChecker import is_bad_proxy
 
-
 class Bot():
 
     register_site = "https://discord.com/register"
@@ -66,6 +65,22 @@ class Bot():
     def __init__(self, driver, display_userdata=False):
         self.driver = driver
         self.display_userdata = display_userdata
+        email_file = open('temp_mail.txt', 'r')
+        ln = email_file.readline()
+        if ln != "0":
+            return
+        else:
+            email_file = open('temp_mail.txt', 'r')
+            email_file.readline()
+            email_file = open('temp_mail.txt', 'w')
+            line = "0"
+            email_file.write(line)
+        #lines = email_file.readlines()
+        #lines
+        #lines[0] = "69"
+        #lines
+        #email_file.writelines(lines)
+
         print("Bot initialized succesfully - Alkosik")
 
     def generate_token(self):
@@ -348,7 +363,8 @@ windows_username = argument_list[1]
 chrome_user_data_dir = 'C:\\Users\\' + \
     windows_username + "\\AppData\\Local\\Google\\Chrome\\User Data - Discord Alt-Token Generator"
 
-
+class MailInfo():
+    WinUser = windows_username
 # setup
 print("Setup...")
 

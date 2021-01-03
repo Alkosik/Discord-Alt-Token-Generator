@@ -1,6 +1,6 @@
 # Discord Alt Token Generator - Alkosik
 
-Alt-token generator for discord (very slow)
+Alt-token generator for discord using **Selenium** (very slow)
 
 ### FIXED FORK OF https://github.com/Matix-Media/discord-alt-token-generator
 

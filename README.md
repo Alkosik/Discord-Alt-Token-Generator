@@ -10,12 +10,12 @@ The creator and publisher of this bot is not responsible for any kind of damage 
 
 We recommend using a VPN when using the bot.
 
-#### Creator: Matix-Media
-#### Fixed By: Alkosik
+**Creator: Matix-Media**  
+**Fixed By: Alkosik**
 
 # Usage under Windows (CMD)
 
-First you have to active the virutal enviroment wich contains packages and a python copy. To do this, just navigate to the main folder of the scripts and type the follwing line into your command prompt (PowerShell/VSC Terminal wont work)
+First you have to active the virutal enviroment wich contains packages and a python copy. To do this, just navigate to the main folder of the scripts and type the follwing line into your command prompt (PowerShell/VSC Terminal wont work):
 
 `> venv\Scripts\activate`
 
@@ -58,7 +58,7 @@ To run the generator now, just go to the help, for all infos you need.
 
 `> py generator.py help`
 
-It should tell you something like this
+It should tell you something like this:
 
 ```
 :: HELP ::

@@ -64,19 +64,20 @@ def generate_sentence():
 class DiscordAccount():
     token = None
     email = None
-    sentence = generate_sentence()
-    while len(sentence) >= 32:
-        sentence = generate_sentence()
-        if len(sentence) <= 32:
-            username = sentence
-            break
+    unsername = None
     password = None
 
     def __init__(self):
         pass
 
     def generate_random_credentials(self):
-        self.username = generate_sentence()
+        sentence = generate_sentence()
+        while len(sentence) >= 32:
+            sentence = generate_sentence()
+            if len(sentence) <= 32:
+                self.username = sentence
+            break
+        #self.username = generate_sentence()
         self.email = generate_email()
         self.password = generate_password(10)
         self.welcome_message = generate_sentence()

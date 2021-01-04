@@ -36,7 +36,7 @@ def generate_email(mail=None, min=5, max=20):
     winacc = "" + mail + "+" + str(current_mails)
   
 
-    finale = winacc + "@" + + domain#windom + "." + winext
+    finale = winacc + "@" + domain#windom + "." + winext
     print(finale)
     current_mails += 1
     print('CURRENT MAILS:' + str(current_mails))

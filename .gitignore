@@ -2,3 +2,4 @@ tokens/
 /__pycache__/
 debug.log
 /.vscode/
+temp_mail.txt

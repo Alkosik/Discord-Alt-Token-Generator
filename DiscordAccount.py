@@ -64,7 +64,12 @@ def generate_sentence():
 class DiscordAccount():
     token = None
     email = None
-    username = generate_sentence()
+    sentence = generate_sentence()
+    while len(sentence) >= 32:
+        sentence = generate_sentence()
+        if len(sentence) <= 32:
+            username = sentence
+            break
     password = None
 
     def __init__(self):

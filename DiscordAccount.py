@@ -12,8 +12,14 @@ def generate_email(mail=None, min=5, max=20):
     domains = ['gmail', 'yahoo', 'comcast', 'verizon',
                'charter', 'hotmail', 'outlook', 'frontier', 'web']
 
-    winext = extensions[random.randint(0, len(extensions)-1)]
-    windom = domains[random.randint(0, len(domains)-1)]
+    f = open('email.txt')
+    lines = f.readlines()
+
+
+    #winext = extensions[random.randint(0, len(extensions)-1)]
+    #windom = domains[random.randint(0, len(domains)-1)]
+    windom = lines[1]
+    winext = lines[2]
 
     #acclen = random.randint(min, max)
 
@@ -22,9 +28,9 @@ def generate_email(mail=None, min=5, max=20):
     print('LINE:' + line)
     current_mails = int(line)
     
-    f = open('email.txt')
-    first_line = f.readline()
-    mail = first_line
+    #f = open('email.txt')
+    #first_line = f.readline()
+    mail = lines[0]
     
     winacc = "" + mail + "+" + str(current_mails)
   

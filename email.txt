@@ -1,3 +1,2 @@
 alkos
-gmail
-com
+gmail.com

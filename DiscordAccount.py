@@ -18,8 +18,9 @@ def generate_email(mail=None, min=5, max=20):
 
     #winext = extensions[random.randint(0, len(extensions)-1)]
     #windom = domains[random.randint(0, len(domains)-1)]
-    windom = lines[1]
-    winext = lines[2]
+    #windom = lines[1]
+    #winext = lines[2]
+    domain = lines[1]
 
     #acclen = random.randint(min, max)
 
@@ -35,7 +36,7 @@ def generate_email(mail=None, min=5, max=20):
     winacc = "" + mail + "+" + str(current_mails)
   
 
-    finale = winacc + "@" + windom + "." + winext
+    finale = winacc + "@" + + domain#windom + "." + winext
     print(finale)
     current_mails += 1
     print('CURRENT MAILS:' + str(current_mails))

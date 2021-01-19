@@ -74,9 +74,9 @@ class DiscordAccount():
         sentence = generate_sentence()
         while len(sentence) >= 32:
             sentence = generate_sentence()
-            if len(sentence) <= 32:
-                self.username = sentence
-            break
+            continue
+        if len(sentence) <= 32:
+            self.username = sentence
         #self.username = generate_sentence()
         self.email = generate_email()
         self.password = generate_password(10)

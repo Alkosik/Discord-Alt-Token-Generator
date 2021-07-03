@@ -1,3 +1,9 @@
+#system
+from os import path, mkdir
+import random
+import time
+
+#essentials
 from selenium import webdriver
 from selenium.common import exceptions as sel_exceptions
 from selenium.webdriver.common.keys import Keys
@@ -5,31 +11,35 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support.ui import Select
 from LocalStorage import LocalStorage
-import time
 from DiscordAccount import DiscordAccount
 from sys import argv
 from sys import stdout
 import datetime
-from os import path, mkdir
-import random
 from proxyChecker import is_bad_proxy
+
+#recaptcha libraries
+# import speech_recognition as sr
+# import ffmpy
+# import requests
+# import urllib
+# import pydub
 
 class Bot():
 
     register_site = "https://discord.com/register"
     app_home = "https://discord.com/channels/@me"
     register_site_timeout = 3
-    email_selector = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div:nth-child(1) > div > input"
-    username_selector = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div:nth-child(2) > div > input"
-    password_selector = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div:nth-child(3) > div > input"
-    terms_selector = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignCenter-1dQNNs.noWrap-3jynv6.marginTop20-3TxNs6 > label > input"
+    email_selector = '/html/body/div/div[2]/div/div/form/div/div/div[1]/div/div/div[2]/input'
+    username_selector = '//*[@id="app-mount"]/div[2]/div/div/form/div/div/div[2]/div/input'
+    password_selector = '//*[@id="app-mount"]/div[2]/div/div/form/div/div/div[3]/div/input'
+    terms_selector = '//*[@id="app-mount"]/div[2]/div/div/form/div/div/div[5]/label/input'
     register_next_selector = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div:nth-child(5) > button"
     register_next_selector_us = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div:nth-child(4) > button"
     
     # -- BIRTHDATE --
     #################
     # -- MONTH --
-    month_s = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div.container-3bTSed.marginTop20-3TxNs6 > div.inputs-14Hc7m > div:nth-child(1) > div > div > div > div > div.css-1fhf191 > div"
+    month_s = '//*[@id="app-mount"]/div[2]/div/div/form/div/div/div[4]/div[1]/div[1]/div/div/div/div/div[2]/div'
     ##month_input = ""
     # -- DAY --
     day_s = "#app-mount > div.app-1q1i1E > div > div.leftSplit-1qOwnR > div > form > div > div.block-egJnc0.marginTop20-3TxNs6 > div.container-3bTSed.marginTop20-3TxNs6 > div.inputs-14Hc7m > div:nth-child(2) > div > div > div > div > div.css-1fhf191 > div"
@@ -160,23 +170,19 @@ class Bot():
                 print("AUTH ERR: Got unpredicted redirect!")
                 return None
 
-        email_textbox = self.driver.find_elements_by_css_selector(
-            self.email_selector)[0]
-        username_textbox = self.driver.find_elements_by_css_selector(
-            self.username_selector)[0]
-        password_textbox = self.driver.find_elements_by_css_selector(
-            self.password_selector)[0]
-        month_dropdown = self.driver.find_elements_by_css_selector(self.month_s)[0]
-        day_dropdown = self.driver.find_elements_by_css_selector(self.day_s)[0]
-        year_dropdown = self.driver.find_elements_by_css_selector(self.year_s)[0]
+        email_textbox = driver.find_element_by_name('email')
+        username_textbox = driver.find_element_by_name('username')
+        password_textbox = driver.find_element_by_name('password')
+        time.sleep(1);
+        month_dropdown = driver.find_elements_by_xpath("//*[contains(text(), 'Select')]")[0]
+        day_dropdown = driver.find_elements_by_xpath("//*[contains(text(), 'Select')]")[1]
+        year_dropdown = driver.find_elements_by_xpath("//*[contains(text(), 'Select')]")[2]
 
-        if self.driver.find_elements_by_css_selector(
-                self.terms_selector):
-            terms_checkbox = self.driver.find_elements_by_css_selector(
-                self.terms_selector)[0]
-            next_button = self.driver.find_elements_by_css_selector(self.register_next_selector)
+        if driver.find_element_by_xpath("//input[@type='checkbox']"):
+            terms_checkbox = driver.find_element_by_xpath("//input[@type='checkbox']")
+            next_button = self.driver.find_element_by_xpath("//button[@type='submit']")
         else:
-            next_button = self.driver.find_elements_by_css_selector(self.register_next_selector_us)[0]
+            next_button = self.driver.find_elements_by_css_selector(self.register_next_selector_us)#[0]
 
         email_textbox.send_keys(account.email)
         username_textbox.send_keys(account.username)
@@ -185,13 +191,13 @@ class Bot():
         # -- START OF BIRTHDATE --
         # MONTH
         month_dropdown.click()
-        self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[1]/div/div/div/div/div[1]/div[2]/div/input').send_keys('November', Keys.RETURN)
+        self.driver.find_element_by_xpath('//*[@id="react-select-2-input"]').send_keys('November', Keys.RETURN)
         # DAY
         day_dropdown.click()
-        self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[2]/div/div/div/div/div[1]/div[2]/div/input').send_keys('5', Keys.RETURN)
+        self.driver.find_element_by_xpath('//*[@id="react-select-3-input"]').send_keys('5', Keys.RETURN)
         # YEAR
         year_dropdown.click()
-        self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[3]/div/div/div/div/div[1]/div[2]/div/input').send_keys('1995', Keys.RETURN)
+        self.driver.find_element_by_xpath('//*[@id="react-select-4-input"]').send_keys('1995', Keys.RETURN)
         # -- BDATE DEPRACTED --
         # MONTH
         #self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[4]/div[1]/div[1]/div/div/div/div/div[2]/div').click()
@@ -210,7 +216,7 @@ class Bot():
         # ===========================
         # -- CONTINUE BUTTON --
         #next_button.click()
-        self.driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/form/div/div[2]/div[6]/button').click()
+        next_button.click()
         # -- CONTINUE BUTTON END -- 
         last_reclick = self.reclick_delay
         while self.driver.current_url == login_site_tmp:

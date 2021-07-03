@@ -1,2 +1,2 @@
-alkos
-gmail.com
+email_username
+domain.com
